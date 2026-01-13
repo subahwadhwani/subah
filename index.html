@@ -150,6 +150,123 @@
       h1 {
         font-size: 32px;
       }
+      /* ===== RAWER / LESS "POLISHED" LOOK (NO TEXT CHANGES) ===== */
+
+/* Subtle grain overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.06) 0 1px, rgba(0,0,0,0) 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0 1px, rgba(0,0,0,0) 1px 4px);
+}
+
+/* Slightly less perfect card */
+.card {
+  border-radius: 16px; /* down from 20 */
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.65);
+  position: relative;
+}
+
+/* Add a “taped note” vibe */
+.card::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 36px;
+  width: 86px;
+  height: 22px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  transform: rotate(-4deg);
+}
+
+/* Make spacing feel more human */
+section { margin-top: 28px; }
+li { margin-bottom: 10px; }
+
+/* Headings a touch less corporate */
+h1 {
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+h2 {
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(245,245,245,0.92);
+}
+
+/* Slightly rawer type rhythm */
+.subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Links: remove “website” underline vibe, replace with marker highlight on hover */
+a {
+  border-bottom: none;               /* remove the neat underline */
+  position: relative;
+}
+a::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  height: 9px;
+  background: rgba(83, 178, 255, 0.16);
+  transform: skewX(-8deg);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: -1;
+}
+a:hover::after {
+  opacity: 1;
+}
+
+/* Avatar: less “app UI”, more “photo” */
+.avatar {
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+}
+.avatar img {
+  filter: contrast(1.05) saturate(1.05);
+}
+
+/* Lists: slightly tighter + cleaner */
+ul { margin-left: 18px; }
+li { font-size: 15px; }
+
+/* ===== Standout “work with us” button style (just design) ===== */
+.work-with-us {
+  list-style: none;
+  margin-top: 12px;
+}
+
+.work-with-us a {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(83, 178, 255, 0.55);
+  background: rgba(83, 178, 255, 0.10);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.work-with-us a:hover {
+  background: rgba(83, 178, 255, 0.18);
+  border-color: rgba(83, 178, 255, 0.95);
+}
+
     }
   </style>
 </head>
@@ -236,6 +353,7 @@
             </li>
             <li>$130k+ MRR.</li>
             <li>Office in blr with the coolest team ever.</li>
+            <li class="work-with-us"><a href="https://www.notion.so/atomikgrowth/Atomik-Job-Board-e9802f5753254e3eac337eba517412af" target="_blank" rel="noopener noreferrer">Work with us</a></li>
           </ul>
         </ul>
       </section>
